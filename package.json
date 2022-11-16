@@ -1,0 +1,27 @@
+{
+  "name": "bigbrotheriswatchingyou",
+  "version": "1.0.0",
+  "description": "BigBrotherIsWatchingYou",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HasanMuhammadNoor/BigBrotherIsWatchingYou.git"
+  },
+  "keywords": [
+    "BigBrotherIsWatchingYou"
+  ],
+  "author": "Hasan Noor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HasanMuhammadNoor/BigBrotherIsWatchingYou/issues"
+  },
+  "homepage": "https://github.com/HasanMuhammadNoor/BigBrotherIsWatchingYou#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  }
+}
