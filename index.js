@@ -87,3 +87,26 @@ function viewEmployee(){
         startMenu()
     })
 };
+
+function exitApplication(){
+    db.end()
+    process.exit(0)
+};
+
+function addDepartment(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Enter department name.",
+            name: "departmentName"
+        }
+    ]).then(function(response){
+        db.query("insert into department(name)values(?)",response.departmentName,function(err,results){
+            if(err){
+                console.log(err)
+            }
+            console.table(results)
+            startMenu()
+        })
+    })
+}
