@@ -2,7 +2,7 @@ USE employeeTracker_db;
 
 insert into department(name)values('IT'),('Sales'),('Marketing'),('Finance'),('Legal'),('Customer Service');
 
-* from department;
+select * from department;
 
 insert into role (title,salary,department_id)values
 ('Manager',12345,1),
