@@ -1,14 +1,14 @@
 const inquirer = require("inquirer");
-const mysql = require("mysql2");
-require("console.table")
+const mysql2 = require("mysql2");
+require("console.table");
 
-const db = mysql.createConnection({
+const db = mysql2.createConnection({
         host: 'localhost',
         user: 'root',
         password: 'PASSWORD',
         database: 'employeeTracker_db'
 },
-    console.log("Welecome to Emp")
+    console.log("This is the employeeTracker_db.")
 );
 startMenu()
 
@@ -26,10 +26,9 @@ function startMenu(){
     inquirer.prompt([
         {
             type: "list",
-            name:"options",
-            choices:["View Department","View Roles","View Employee","Add Department","Add Role","Add Employee","Exit Application"],
+            name: "options",
+            choices: ["View Department","View Roles","View Employee","Add Department","Add Role","Add Employee","Exit Application"],
             message: "Choose an option.",
-
         }
     ]).then(function(response){
         switch(response.options){
@@ -97,7 +96,7 @@ function addDepartment(){
     inquirer.prompt([
         {
             type: "input",
-            message: "Enter department name.",
+            message: "Input the department name.",
             name: "departmentName"
         }
     ]).then(function(response){
@@ -109,4 +108,40 @@ function addDepartment(){
             startMenu()
         })
     })
-}
+};
+
+function addRoles(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Input the role name.",
+            name: "rolesName"
+        }
+    ]).then(function(response){
+        db.query("insert into role (title,salary,department_id)values(?)",response.rolesName,function(err,results){
+            if(err){
+                console.log(err)
+            }
+            console.table(results)
+            startMenu()
+        })
+    })
+};
+
+function addEmployee(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Input the employee name.",
+            name: "employeeName"
+        }
+    ]).then(function(response){
+        db.query("insert into employee(first_name,last_name,role_id)values(?)",response.employeeName,function(err,results){
+            if(err){
+                console.log(err)
+            }
+            console.table(results)
+            startMenu()
+        })
+    })
+};
